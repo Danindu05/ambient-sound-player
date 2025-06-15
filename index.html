@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>WAVENEST</title>
+
+  <!-- Font Awesome for play/pause icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:ital@1&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Plain icon button */
+    .play-icon {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 10rem;
+      color: white;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .play-icon:hover {
+      color: #ddd;
+    }
+
+    .volume {
+      position: absolute;
+      top: calc(40% + 120px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+
+    .volume input[type=range] {
+      width: 200px;
+      appearance: none;
+      height: 3px;
+      background: white;
+      outline: none;
+      border-radius: 5px;
+    }
+
+    .volume input::-webkit-slider-thumb {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .hero-title {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 4;
+      color: white;
+      pointer-events: none;
+      opacity: 0;
+      animation: fadeIn 2s ease-out 1s forwards;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      letter-spacing: 0.15rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      margin: 0;
+    }
+
+    .tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #eaeaea;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <script src="js/rainyday.js"></script>
+</head>
+
+<body onload="run();">
+  <!-- Background -->
+  <img id="background" src="" alt="Background" />
+
+  <!-- Play/Pause Icon Button -->
+  <i class="fa-regular fa-circle-play play-icon" id="playIcon"></i>
+  
+  <!-- Volume Control -->
+  <div class="volume">
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.6">
+  </div>
+
+  <!-- Title -->
+  <div class="hero-title">
+    <h1 class="logo">WAVENEST</h1>
+    <p class="tagline">Let the rain set the tone.</p>
+  </div>
+
+  <script>
+    const audio = new Audio("audio/rain.mp3");
+    audio.loop = true;
+    audio.volume = 0.6;
+
+    const icon = document.getElementById("playIcon");
+    const slider = document.getElementById("volumeSlider");
+
+    let isPlaying = false;
+
+    icon.addEventListener("click", () => {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          icon.classList.remove("fa-circle-play");
+          icon.classList.add("fa-circle-pause");
+          isPlaying = true;
+        }).catch(err => {
+          alert("Audio blocked: " + err.message);
+        });
+      } else {
+        audio.pause();
+        icon.classList.remove("fa-circle-pause");
+        icon.classList.add("fa-circle-play");
+        isPlaying = false;
+      }
+    });
+
+    slider.addEventListener("input", () => {
+      audio.volume = parseFloat(slider.value);
+    });
+
+    function run() {
+      const image = document.getElementById("background");
+      image.onload = function () {
+        const engine = new RainyDay({ image: this });
+        engine.rain([[5, 5, 5]], 100);
+
+        const canvas = document.querySelector("canvas");
+        if (canvas) {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+      };
+      image.crossOrigin = "anonymous";
+      image.src = "img/rain.png";
+    }
+  </script>
+</body>
+</html>
