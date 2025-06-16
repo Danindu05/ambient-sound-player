@@ -1,0 +1,140 @@
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .play-icon {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5rem;
+      color: white;
+      z-index: 5;
+      cursor: pointer;
+      font-size: 10rem;
+    }
+
+   .volume {
+  position: absolute;
+  top: calc(40% + 120px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.volume input[type=range] {
+  width: 200px;
+  height: 6px;
+  -webkit-appearance: none;
+  background: linear-gradient(to right, #ffffffaa, #ffffff55);
+  border-radius: 10px;
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  transition: background 0.3s ease;
+}
+
+.volume input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s;
+}
+
+.volume input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.volume input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+    .hero-title {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 4;
+      color: white;
+      pointer-events: none;
+      opacity: 1;
+     
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      letter-spacing: 0.15rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #eaeaea;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .scene-selector {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
+      display: flex;
+      gap: 12px;
+    }
+
+    .scene-selector button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.scene-selector button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
