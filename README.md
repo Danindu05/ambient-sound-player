@@ -1,5 +1,5 @@
 # 🎧 Wavenest
-A simple and relaxing web app that plays peaceful background sounds like rain, thunder, waves, and birds, with matching visuals to help you focus, relax, or sleep.
+A simple and relaxing web app that plays peaceful background sounds like rain, thunder, piano, and birds, with matching visuals to help you focus, relax, or sleep.
 
 ## 🌐 Website Features  
 - **🌧️ Realistic Rain Effect using RainyDay.js**
@@ -15,7 +15,7 @@ A simple and relaxing web app that plays peaceful background sounds like rain, t
 - **RainyDay.js**  
 
 ## 🚀 Live Demo    
-🔗 [View Wavenest Website](https://danindu05.github.io/wavenest/)
+🔗 [View WaveNest Website](https://danindu05.github.io/wavenest/)
 
 
 # 💻 Local Development  
