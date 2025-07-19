@@ -15,7 +15,7 @@ A simple and relaxing web app that plays peaceful background sounds like rain, t
 - **RainyDay.js**  
 
 ## 🚀 Live Demo    
-🔗 [View WaveNest Website](https://danindu05.github.io/wavenest/)
+🔗 [View WaveNest Website](https://danindu05.github.io/ambient-sound-player/)
 
 
 # 💻 Local Development  
